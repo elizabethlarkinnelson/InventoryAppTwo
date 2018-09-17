@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">InventoryAppTwo</string>
+
+    <!-- activity_catalog strings -->
+    <string name="empty_view_title_text">Whoops! There are no products.</string>
+    <string name="empty_view_description">Would you like to add some products?</string>
 </resources>
