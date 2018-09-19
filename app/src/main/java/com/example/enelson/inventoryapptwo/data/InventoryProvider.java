@@ -112,7 +112,7 @@ public class InventoryProvider extends ContentProvider {
     @Override
     public int update(Uri uri, ContentValues contentValues, String selection,
                       String[] selectionArgs){
-        final int match = sUriMatcher.match(uri;
+        final int match = sUriMatcher.match(uri);
         switch (match){
             case INVENTORY:
                 return updateInventory(uri, contentValues, selection, selectionArgs);
