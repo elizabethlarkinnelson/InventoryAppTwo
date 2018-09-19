@@ -74,5 +74,24 @@ public final class InventoryContract {
          */
 
         public final static String COLUMN_PRODUCT_SUPPLIER_PHONE = "supplier_phone";
+
+        /**
+         * Accepted supplier identifiers
+         */
+
+        public static final int SUPPLIER_UNKNOWN = 0;
+        public static final int SUPPLIER_1 = 1;
+        public static final int SUPPLIER_2 = 2;
+
+        /**
+         * @param supplier
+         */
+
+        public static boolean isValidSupplier(int supplier) {
+            if (supplier == SUPPLIER_UNKNOWN || supplier == SUPPLIER_1 || supplier == SUPPLIER_2){
+                return true;
+            }
+            return false;
+        }
     }
 }
