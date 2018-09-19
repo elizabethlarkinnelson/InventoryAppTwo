@@ -28,7 +28,7 @@
         </activity>
         <provider
             android:name=".data.InventoryProvider"
-            android:authorities="com.example.android.pets"
+            android:authorities="com.example.enelson.inventoryapptwo"
             android:exported="false" />
     </application>
 
