@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -63,6 +64,21 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         getLoaderManager().initLoader(INVENTORY_LOADER, null, this);
     }
 
+    private void insertInventory() {
+        ContentValues values = new ContentValues();
+        values.put(InventoryContract.InventoryEntry.COLUMN_PRODUCT_NAME, "Paintbrush");
+        values.put(InventoryContract.InventoryEntry.COLUMN_PRODUCT_PRICE, 5);
+        values.put(InventoryContract.InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME, 1);
+        values.put(InventoryContract.InventoryEntry.COLUMN_PRODUCT_SUPPLIER_PHONE, "888-888-8888");
+
+        Uri newUri = getContentResolver().insert(InventoryContract.InventoryEntry.CONTENT_URI, values);
+    }
+
+    private void deleteAllInventory() {
+        int rowsDeleted = getContentResolver().delete(InventoryContract.InventoryEntry.CONTENT_URI, null, null);
+        Log.v("Catalog Acitvity", "Data deleted from database" + rowsDeleted);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu_catalog, menu);
@@ -70,10 +86,25 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
     }
 
     @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.action_insert_dummy_data:
+                insertInventory();
+            case R.id.action_delete_all_entries:
+                deleteAllInventory();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle){
         String[] projection = {
                 InventoryContract.InventoryEntry._ID,
                 InventoryContract.InventoryEntry.COLUMN_PRODUCT_NAME,
+                InventoryContract.InventoryEntry.COLUMN_PRODUCT_PRICE,
+                InventoryContract.InventoryEntry.COLUMN_PRODUCT_SUPPLIER_PHONE,
+                InventoryContract.InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME,
                 InventoryContract.InventoryEntry.COLUMN_PRODUCT_QUANTITY
         };
 
