@@ -103,8 +103,6 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
                 InventoryContract.InventoryEntry._ID,
                 InventoryContract.InventoryEntry.COLUMN_PRODUCT_NAME,
                 InventoryContract.InventoryEntry.COLUMN_PRODUCT_PRICE,
-                InventoryContract.InventoryEntry.COLUMN_PRODUCT_SUPPLIER_PHONE,
-                InventoryContract.InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME,
                 InventoryContract.InventoryEntry.COLUMN_PRODUCT_QUANTITY
         };
 

@@ -42,7 +42,7 @@ public class InventoryCursorAdapter extends CursorAdapter{
         String productQuantity = cursor.getString(quantityColumnIndex);
         String productSupplier = cursor.getString(supplierColumnIndex);
         String productSupplierPhone = cursor.getString(supplierPhoneColumnIndex);
-        
+
         nameTextView.setText(productName);
         priceTextView.setText(productPrice);
         quantityTextView.setText(productQuantity);

@@ -22,7 +22,7 @@
             android:layout_height="0dp">
 
             <EditText
-                android:id="@+id/edit_product_name"
+                android:id="@+id/edit_inventory_name"
                 android:hint="@string/hint_product_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -46,7 +46,56 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/edit_inventory_name"
+                android:id="@+id/edit_inventory_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/supplier_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_supplier_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/quantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"/>
@@ -71,6 +120,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <Spinner
+                android:id="@+id/spinner_supplier"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:spinnerMode="dropdown"/>

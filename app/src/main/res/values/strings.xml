@@ -8,5 +8,17 @@
     <!-- activity_editor strings -->
     <string name="editor_title">Editor</string>
     <string name="hint_product_name">paint brush</string>
+    <string name="editor_activity_title_new_product">New Product</string>
+    <string name="editor_activity_title_edit_inventory">Edit Inventory</string>
+
+    <!-- supplier spinner strings -->
+    <string name="suppler1">Brushs Galore</string>
+    <string name="supplier2">Brushtastic</string>
+    <string name="supplier3">Brushs and More</string>
+
+    <!-- Toast -->
+    <string name="insert_supply_failed">Failed to add brush to database</string>
+    <string name="insert_supply_successful">Brush successfully added</string>
+
 
 </resources>
