@@ -19,6 +19,8 @@
     <!-- Toast -->
     <string name="insert_supply_failed">Failed to add brush to database</string>
     <string name="insert_supply_successful">Brush successfully added</string>
+    <string name="update_failed">Update Failed/string>
+    <string name="update_finished">Update Finished</string>
 
 
 </resources>

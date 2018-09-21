@@ -137,17 +137,25 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY,quantityInt);
         values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, priceInt);
 
-        if (mCurrentInventoryUri == null){
+        if (mCurrentInventoryUri == null) {
             Uri newUri = getContentResolver().insert(InventoryEntry.CONTENT_URI, values);
 
-            if (newUri == null){
+            if (newUri == null) {
                 Toast.makeText(this, getString(R.string.insert_supply_failed), Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, getString(R.string.insert_supply_successful), Toast.LENGTH_SHORT).show();
             }
+        } else {
+            int rowsAffected = getContentResolver().update(mCurrentInventoryUri, values, null, null);
+
+            if (rowsAffected == 0){
+                Toast.makeText(this, getString(R.string.update_failed), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, getString(R.string.update_finished), Toast.LENGTH_SHORT).show();
+            }
         }
-        //STOPPED HERE!!!!!!!!!!!!!
     }
+    
 
 }
 
