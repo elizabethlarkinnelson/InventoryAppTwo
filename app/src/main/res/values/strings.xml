@@ -19,8 +19,15 @@
     <!-- Toast -->
     <string name="insert_supply_failed">Failed to add brush to database</string>
     <string name="insert_supply_successful">Brush successfully added</string>
-    <string name="update_failed">Update Failed/string>
+    <string name="update_failed">Update Failed</string>
     <string name="update_finished">Update Finished</string>
+    <string name="delete_inventory">Delete complete</string>
+
+    <!--- Builder -->
+    <string name="unsaved_changes">Changes unsaved</string>
+    <string name="discard">Get rid of changes?></string>
+    <string name="edit">Keep editing?</string>
+
 
 
 </resources>

@@ -1,5 +1,6 @@
 package com.example.enelson.inventoryapptwo;
 
+import android.app.AlertDialog;
 import android.app.LoaderManager;
 import android.content.ContentValues;
 import android.content.CursorLoader;
@@ -241,8 +242,92 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             int supplierPhoneColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_PHONE);
 
 
-            
+            String name = cursor.getString(nameColumnIndex);
+            String supplierPhone = cursor.getString(supplierPhoneColumnIndex);
+            int price = cursor.getInt(priceColumnIndex);
+            int quantity = cursor.getInt(quantityColumnIndex);
+            int supplier = cursor.getInt(supplierColumnIndex);
+
+            mNameEditText.setText(name);
+            mSupplierPhoneEditText.setText(supplierPhone);
+            mPriceEditText.setText(price);
+            mQuantityEditText.setText(quantity);
+
+            switch (supplier){
+                case InventoryEntry.SUPPLIER_1:
+                    mSupplierSpinner.setSelection(1);
+                    break;
+                case InventoryEntry.SUPPLIER_2:
+                    mSupplierSpinner.setSelection(2);
+                    break;
+                case InventoryEntry.SUPPLIER_UNKNOWN:
+                    mSupplierSpinner.setSelection(0);
+                    break;
+            }
         }
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader){
+
+        mNameEditText.setText("");
+        mSupplierPhoneEditText.setText("");
+        mPriceEditText.setText("");
+        mQuantityEditText.setText("");
+        mSupplierSpinner.setSelection(0);
+
+    }
+
+
+    public void showUnsavedChangesDialog(DialogInterface.OnClickListener discardButtonClickListener){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(R.string.unsaved_changes);
+        builder.setPositiveButton(R.string.discard, discardButtonClickListener);
+        builder.setNegativeButton(R.string.edit, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                if (dialog != null){
+                    dialog.dismiss();
+                }
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void showDeleteConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Message deleted");
+        builder.setPositiveButton("Deleted", new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog, int id){
+                deleteInventory();
+            }
+        });
+        builder.setNegativeButton("cancel?", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id){
+                if (dialog != null){
+                    dialog.dismiss();
+                }
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    private void deleteInventory() {
+        if (mCurrentInventoryUri != null) {
+            int rowsDeleted = getContentResolver().delete(mCurrentInventoryUri, null, null);
+
+            if (rowsDeleted == 0){
+                Toast.makeText(this,getString(R.string.delete_inventory), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this,getString(R.string.delete_inventory), Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        finish();
     }
 }
 
