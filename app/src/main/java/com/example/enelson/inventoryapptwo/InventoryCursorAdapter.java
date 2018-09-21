@@ -27,7 +27,7 @@ public class InventoryCursorAdapter extends CursorAdapter{
         TextView nameTextView = (TextView) view.findViewById(R.id.name);
         TextView priceTextView = (TextView) view.findViewById(R.id.price);
         TextView quantityTextView = (TextView) view.findViewById(R.id.quantity);
-        TextView supplierTextView = (TextView) view.findViewById(R.id.supplier);
+        TextView supplierTextView = (TextView) view.findViewById(R.id.container_supplier);
         TextView supplierPhoneTextView = (TextView) view.findViewById(R.id.supplier_phone);
 
 
