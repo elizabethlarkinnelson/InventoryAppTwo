@@ -27,26 +27,20 @@ public class InventoryCursorAdapter extends CursorAdapter{
         TextView nameTextView = (TextView) view.findViewById(R.id.name);
         TextView priceTextView = (TextView) view.findViewById(R.id.price);
         TextView quantityTextView = (TextView) view.findViewById(R.id.quantity);
-        TextView supplierTextView = (TextView) view.findViewById(R.id.container_supplier);
-        TextView supplierPhoneTextView = (TextView) view.findViewById(R.id.supplier_phone);
 
 
         int nameColumnIndex = cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_PRODUCT_NAME);
         int priceColumnIndex = cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_PRODUCT_PRICE);
         int quantityColumnIndex = cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_PRODUCT_QUANTITY);
-        int supplierColumnIndex = cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME);
-        int supplierPhoneColumnIndex = cursor.getColumnIndex(InventoryContract.InventoryEntry.COLUMN_PRODUCT_SUPPLIER_PHONE);
+
 
         String productName = cursor.getString(nameColumnIndex);
         String productPrice = cursor.getString(priceColumnIndex);
         String productQuantity = cursor.getString(quantityColumnIndex);
-        String productSupplier = cursor.getString(supplierColumnIndex);
-        String productSupplierPhone = cursor.getString(supplierPhoneColumnIndex);
 
         nameTextView.setText(productName);
         priceTextView.setText(productPrice);
         quantityTextView.setText(productQuantity);
-        supplierTextView.setText(productSupplier);
-        supplierPhoneTextView.setText(productSupplierPhone);
+
     }
 }

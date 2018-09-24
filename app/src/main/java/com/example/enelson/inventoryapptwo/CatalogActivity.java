@@ -68,10 +68,13 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         ContentValues values = new ContentValues();
         values.put(InventoryEntry.COLUMN_PRODUCT_NAME, "Paintbrush");
         values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, 5);
-        values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME, 1);
+        values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY, 1);
+        values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME, InventoryEntry.SUPPLIER_1);
         values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_PHONE, "888-888-8888");
 
         Uri newUri = getContentResolver().insert(InventoryEntry.CONTENT_URI, values);
+
+        Log.v("Catalog Activity", "Data inserted into database" );
     }
 
     private void deleteAllInventory() {
@@ -90,6 +93,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         switch (item.getItemId()){
             case R.id.action_insert_dummy_data:
                 insertInventory();
+                return true;
             case R.id.action_delete_all_entries:
                 deleteAllInventory();
                 return true;

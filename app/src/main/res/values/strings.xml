@@ -28,6 +28,10 @@
     <string name="discard">Get rid of changes?></string>
     <string name="edit">Keep editing?</string>
     <string name="add_button">Add</string>
+    <string name="insert_dummy_data">insert dummy data</string>
+    <string name="delete_all_entries">delete all entries</string>
+    <string name="save">save</string>
+    <string name="delete">delete</string>
 
 
 </resources>
