@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">InventoryAppTwo</string>
+    <string name="app_name">Where\'s My Brush?</string>
 
     <!-- activity_catalog strings -->
-    <string name="empty_view_title_text">Whoops! There are no products.</string>
-    <string name="empty_view_description">Would you like to add some products?</string>
+    <string name="empty_view_title_text">Whoops! There are no brushes.</string>
+    <string name="empty_view_description">Would you like to add some paint brushes?</string>
 
     <!-- activity_editor strings -->
     <string name="editor_title">Editor</string>
@@ -27,7 +27,7 @@
     <string name="unsaved_changes">Changes unsaved</string>
     <string name="discard">Get rid of changes?></string>
     <string name="edit">Keep editing?</string>
-
+    <string name="add_button">Add</string>
 
 
 </resources>

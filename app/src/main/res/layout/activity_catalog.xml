@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".CatalogActivity">
     
     <ListView
         android:id="@+id/list"
@@ -13,7 +14,8 @@
     <RelativeLayout
         android:id="@+id/empty_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
 
         <TextView
             android:id="@+id/empty_title_text"
@@ -22,27 +24,51 @@
             android:layout_centerHorizontal="true"
             android:text="@string/empty_view_title_text"
             android:fontFamily="sans-serif-medium"
-            android:textAppearance="?android:textAppearanceMedium"/>
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/primaryText"
+            />
 
         <TextView
             android:id="@+id/empty_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/empty_title_text"
+            android:layout_centerHorizontal="true"
             android:paddingTop="10dp"
             android:text="@string/empty_view_description"
-            android:textAppearance="?android:textAppearanceSmall"/>
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/secondaryText"
+            />
     </RelativeLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/fab"
-        android:layout_height="wrap_content"
+    <RelativeLayout
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        app:backgroundTint="@color/colorAccent"
-        />
+        android:layout_alignParentRight="true">
+
+
+        <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            app:backgroundTint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/fab_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="16dp"
+            android:layout_centerInParent="true"
+            android:text="@string/add_button"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@android:color/white" />
+
+
+    </RelativeLayout>
+
+
 
 
 </RelativeLayout>
