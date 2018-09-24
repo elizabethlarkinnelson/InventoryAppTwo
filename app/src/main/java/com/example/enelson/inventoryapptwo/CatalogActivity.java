@@ -18,7 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.support.design.widget.FloatingActionButton;
 
-import com.example.enelson.inventoryapptwo.data.InventoryContract;
+import com.example.enelson.inventoryapptwo.data.InventoryContract.InventoryEntry;
 
 public class CatalogActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
 
@@ -53,7 +53,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Intent intent = new Intent(CatalogActivity.this, EditorActivity.class);
 
-                Uri currentInventoryUri = ContentUris.withAppendedId(InventoryContract.InventoryEntry.CONTENT_URI, id);
+                Uri currentInventoryUri = ContentUris.withAppendedId(InventoryEntry.CONTENT_URI, id);
 
                 intent.setData(currentInventoryUri);
 
@@ -66,16 +66,16 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
     private void insertInventory() {
         ContentValues values = new ContentValues();
-        values.put(InventoryContract.InventoryEntry.COLUMN_PRODUCT_NAME, "Paintbrush");
-        values.put(InventoryContract.InventoryEntry.COLUMN_PRODUCT_PRICE, 5);
-        values.put(InventoryContract.InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME, 1);
-        values.put(InventoryContract.InventoryEntry.COLUMN_PRODUCT_SUPPLIER_PHONE, "888-888-8888");
+        values.put(InventoryEntry.COLUMN_PRODUCT_NAME, "Paintbrush");
+        values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, 5);
+        values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME, 1);
+        values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_PHONE, "888-888-8888");
 
-        Uri newUri = getContentResolver().insert(InventoryContract.InventoryEntry.CONTENT_URI, values);
+        Uri newUri = getContentResolver().insert(InventoryEntry.CONTENT_URI, values);
     }
 
     private void deleteAllInventory() {
-        int rowsDeleted = getContentResolver().delete(InventoryContract.InventoryEntry.CONTENT_URI, null, null);
+        int rowsDeleted = getContentResolver().delete(InventoryEntry.CONTENT_URI, null, null);
         Log.v("Catalog Acitvity", "Data deleted from database" + rowsDeleted);
     }
 
@@ -100,13 +100,13 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle){
         String[] projection = {
-                InventoryContract.InventoryEntry._ID,
-                InventoryContract.InventoryEntry.COLUMN_PRODUCT_NAME,
-                InventoryContract.InventoryEntry.COLUMN_PRODUCT_PRICE,
-                InventoryContract.InventoryEntry.COLUMN_PRODUCT_QUANTITY
+                InventoryEntry._ID,
+                InventoryEntry.COLUMN_PRODUCT_NAME,
+                InventoryEntry.COLUMN_PRODUCT_PRICE,
+                InventoryEntry.COLUMN_PRODUCT_QUANTITY
         };
 
-        return new CursorLoader(this, InventoryContract.InventoryEntry.CONTENT_URI, projection,
+        return new CursorLoader(this, InventoryEntry.CONTENT_URI, projection,
             null, null, null);
     }
 
