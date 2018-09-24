@@ -61,7 +61,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:text="price"
+            android:text="supplier phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
