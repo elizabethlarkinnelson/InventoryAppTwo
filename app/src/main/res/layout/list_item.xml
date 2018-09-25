@@ -9,27 +9,48 @@
 
     <TextView
         android:id="@+id/name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:textAppearance="?android:textAppearanceMedium"
+        style="@style/ListItemStyle"
+        android:textColor="@color/primaryText"
         tools:text="Paint Brush"/>
 
-    <TextView
-        android:id="@+id/price"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:textAppearance="?android:textAppearanceMedium"
-        tools:text="9"/>
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/quantity"
+        <TextView
+            android:id="@+id/dollar_sign"
+            style="@style/ListItemStyle"
+            android:textColor="@color/secondaryText"
+            android:text="$"/>
+
+        <TextView
+            android:id="@+id/price"
+            style="@style/ListItemStyle"
+            android:textColor="@color/secondaryText"
+            android:paddingLeft="2dp"
+            tools:text="9"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-medium"
-        android:textAppearance="?android:textAppearanceMedium"
-        tools:text="2"/>
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/list_item_quantity_text"
+            style="@style/ListItemStyle"
+            android:textColor="@color/secondaryText"
+            android:text="@string/quantity_list_item_text"/>
+
+        <TextView
+            android:id="@+id/quantity"
+            style="@style/ListItemStyle"
+            android:textColor="@color/secondaryText"
+            tools:text="2"/>
+
+    </LinearLayout>
 
 
 

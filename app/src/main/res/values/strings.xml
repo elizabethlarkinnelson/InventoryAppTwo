@@ -32,6 +32,7 @@
     <string name="delete_all_entries">Delete All Entries</string>
     <string name="save">Save</string>
     <string name="delete">Delete</string>
+    <string name="quantity_list_item_text">Quantity:</string>
 
 
 </resources>
