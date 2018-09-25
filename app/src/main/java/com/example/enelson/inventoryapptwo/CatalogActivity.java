@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.support.design.widget.FloatingActionButton;
 
@@ -63,6 +64,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
         getLoaderManager().initLoader(INVENTORY_LOADER, null, this);
     }
+
 
     private void insertInventory() {
         ContentValues values = new ContentValues();
