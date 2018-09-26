@@ -64,5 +64,6 @@
         android:layout_alignParentRight="true"
         android:textColor="@color/secondaryText"
         android:text="@string/sale_button"
-        android:textAllCaps="true"/>
+        android:textAllCaps="true"
+        android:focusable="false"/>
 </RelativeLayout>
