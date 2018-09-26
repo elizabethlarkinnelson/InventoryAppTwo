@@ -35,7 +35,5 @@
     <string name="quantity_list_item_text">Quantity:</string>
     <string name="sale_button">sale</string>
 
-    <!--- TEST -->
-    <string name="it_worked">it worked!</string>
 
 </resources>
