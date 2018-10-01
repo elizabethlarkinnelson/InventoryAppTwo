@@ -34,19 +34,20 @@ public class InventoryCursorAdapter extends CursorAdapter{
     public void bindView(View view, final Context context, final Cursor cursor){
         TextView nameTextView = (TextView) view.findViewById(R.id.name);
         TextView priceTextView = (TextView) view.findViewById(R.id.price);
-        final TextView quantityTextView = (TextView) view.findViewById(R.id.quantity);
+        TextView quantityTextView = (TextView) view.findViewById(R.id.quantity);
         final Button button = (Button) view.findViewById(R.id.button_sale);
 
 
         int nameColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_PRODUCT_NAME);
         int priceColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_PRODUCT_PRICE);
-        final int quantityColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_PRODUCT_QUANTITY);
+        int quantityColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_PRODUCT_QUANTITY);
         final int idColumnIndex = cursor.getColumnIndex(InventoryEntry._ID);
 
 
+        final String productID = cursor.getString(idColumnIndex);
         String productName = cursor.getString(nameColumnIndex);
         String productPrice = cursor.getString(priceColumnIndex);
-        String productQuantity = cursor.getString(quantityColumnIndex);
+        final String productQuantity = cursor.getString(quantityColumnIndex);
 
         nameTextView.setText(productName);
         priceTextView.setText(productPrice);
@@ -56,7 +57,7 @@ public class InventoryCursorAdapter extends CursorAdapter{
             @Override
             public void onClick(View v) {
                 CatalogActivity catalogActivity = (CatalogActivity) context;
-                catalogActivity.decreaseCount();
+                catalogActivity.decreaseCount(productID, Integer.parseInt(productQuantity));
             }
         });
     }

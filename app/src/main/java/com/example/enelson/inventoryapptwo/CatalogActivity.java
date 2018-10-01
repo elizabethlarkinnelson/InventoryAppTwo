@@ -72,7 +72,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         ContentValues values = new ContentValues();
         values.put(InventoryEntry.COLUMN_PRODUCT_NAME, "Paintbrush");
         values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, 5);
-        values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY, 1);
+        values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY, 5);
         values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME, InventoryEntry.SUPPLIER_1);
         values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_PHONE, "888-888-8888");
 
@@ -128,7 +128,19 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         mCursorAdaptor.swapCursor(null);
     }
 
-    public void decreaseCount(){
-        Toast.makeText(this, "I got here!", Toast.LENGTH_SHORT).show();
+    public void decreaseCount(String id, int quantity){
+
+        quantity = quantity - 1;
+
+        Log.e("PRICEEEEEEEEEEE", Integer.toString(quantity));
+
+        ContentValues values = new ContentValues();
+        values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY, quantity);
+
+
+        Uri updateUri = ContentUris.withAppendedId(InventoryEntry.CONTENT_URI, Integer.parseInt(id));
+        int rowsAffected = getContentResolver().update(updateUri, values, id, null );
+
+        Log.e("FARRRTTTTT", Integer.toString(rowsAffected));
     }
 }
