@@ -18,7 +18,9 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.support.design.widget.FloatingActionButton;
+import android.widget.Toast;
 
+import com.example.enelson.inventoryapptwo.data.InventoryContract;
 import com.example.enelson.inventoryapptwo.data.InventoryContract.InventoryEntry;
 
 public class CatalogActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
@@ -124,5 +126,9 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
     @Override
     public void onLoaderReset(Loader<Cursor> loader){
         mCursorAdaptor.swapCursor(null);
+    }
+
+    public void decreaseCount(){
+        Toast.makeText(this, "I got here!", Toast.LENGTH_SHORT).show();
     }
 }

@@ -13,7 +13,7 @@ import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.enelson.inventoryapptwo.data.InventoryContract.InventoryEntry
+import com.example.enelson.inventoryapptwo.data.InventoryContract.InventoryEntry;
 
 import com.example.enelson.inventoryapptwo.data.InventoryContract;
 import com.example.enelson.inventoryapptwo.data.InventoryDbHelper;
@@ -21,6 +21,7 @@ import com.example.enelson.inventoryapptwo.data.InventoryDbHelper;
 public class InventoryCursorAdapter extends CursorAdapter{
 
     public InventoryCursorAdapter(Context context, Cursor c){
+
         super(context, c, 0 /* flags */);
     }
 
@@ -30,7 +31,7 @@ public class InventoryCursorAdapter extends CursorAdapter{
     }
 
     @Override
-    public void bindView(View view, final Context context, Cursor cursor){
+    public void bindView(View view, final Context context, final Cursor cursor){
         TextView nameTextView = (TextView) view.findViewById(R.id.name);
         TextView priceTextView = (TextView) view.findViewById(R.id.price);
         final TextView quantityTextView = (TextView) view.findViewById(R.id.quantity);
@@ -39,16 +40,13 @@ public class InventoryCursorAdapter extends CursorAdapter{
 
         int nameColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_PRODUCT_NAME);
         int priceColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_PRODUCT_PRICE);
-        int quantityColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_PRODUCT_QUANTITY);
-        int idColumnIndex = cursor.getColumnIndex(InventoryEntry._ID);
+        final int quantityColumnIndex = cursor.getColumnIndex(InventoryEntry.COLUMN_PRODUCT_QUANTITY);
+        final int idColumnIndex = cursor.getColumnIndex(InventoryEntry._ID);
 
 
         String productName = cursor.getString(nameColumnIndex);
         String productPrice = cursor.getString(priceColumnIndex);
         String productQuantity = cursor.getString(quantityColumnIndex);
-
-        button.setTag(R.id.quantity, cursor.getString(quantityColumnIndex));
-        button.setTag(R.id.id_for_button, cursor.getString(idColumnIndex));
 
         nameTextView.setText(productName);
         priceTextView.setText(productPrice);
@@ -57,8 +55,8 @@ public class InventoryCursorAdapter extends CursorAdapter{
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
-                }
+                CatalogActivity catalogActivity = (CatalogActivity) context;
+                catalogActivity.decreaseCount();
             }
         });
     }
