@@ -15,17 +15,20 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
             android:text="@string/editor_title"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="0dp">
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/edit_inventory_name"
                 android:hint="@string/hint_product_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
                 android:inputType="textCapWords"
                 />
         </LinearLayout>
@@ -37,18 +40,23 @@
         android:orientation="horizontal">
 
         <TextView
-            android:text="price"
+            android:text="@string/price"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"/>
 
         <RelativeLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/edit_inventory_price"
+                android:hint="5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
                 android:inputType="number"/>
 
         </RelativeLayout>
@@ -61,19 +69,26 @@
         android:orientation="horizontal">
 
         <TextView
-            android:text="supplier phone"
+            android:text="@string/supplier_phone"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            />
 
         <RelativeLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/edit_supplier_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"/>
+                android:hint="8888888888"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:inputType="number"
+                />
 
         </RelativeLayout>
 
@@ -85,19 +100,24 @@
         android:orientation="horizontal">
 
         <TextView
-            android:text="price"
+            android:text="@string/quantity"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"/>
 
         <RelativeLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/edit_quantity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number"/>
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:inputType="number"
+                android:hint="10"/>
 
         </RelativeLayout>
 
@@ -112,11 +132,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Supplier"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="8dp"
+            android:text="@string/supplier"/>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
             android:orientation="vertical">
             <Spinner
                 android:id="@+id/spinner_supplier"

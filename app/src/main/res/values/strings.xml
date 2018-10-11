@@ -6,10 +6,14 @@
     <string name="empty_view_description">Would you like to add some paint brushes?</string>
 
     <!-- activity_editor strings -->
-    <string name="editor_title">Editor</string>
+    <string name="editor_title">Inventory</string>
     <string name="hint_product_name">paint brush</string>
     <string name="editor_activity_title_new_product">New Product</string>
     <string name="editor_activity_title_edit_inventory">Edit Inventory</string>
+    <string name="price">Price</string>
+    <string name="supplier_phone">Supplier Phone</string>
+    <string name="quantity">Quantity</string>
+
 
     <!-- supplier spinner strings -->
     <string name="suppler1">Brushs Galore</string>
@@ -34,6 +38,7 @@
     <string name="delete">Delete</string>
     <string name="quantity_list_item_text">Quantity:</string>
     <string name="sale_button">sale</string>
+    <string name="supplier">Supplier</string>
 
 
 </resources>
