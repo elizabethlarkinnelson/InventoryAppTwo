@@ -251,8 +251,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
             mNameEditText.setText(name);
             mSupplierPhoneEditText.setText(supplierPhone);
-            mPriceEditText.setText(price);
-            mQuantityEditText.setText(quantity);
+            mPriceEditText.setText(Integer.toString(price));
+            mQuantityEditText.setText(Integer.toString(quantity));
 
             switch (supplier){
                 case InventoryEntry.SUPPLIER_1:
