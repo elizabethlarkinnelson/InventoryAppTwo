@@ -174,6 +174,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             case R.id.action_save:
                 saveInventory();
                 finish();
+                return true;
 
             case R.id.action_delete:
                 showDeleteConfirmationDialog();
