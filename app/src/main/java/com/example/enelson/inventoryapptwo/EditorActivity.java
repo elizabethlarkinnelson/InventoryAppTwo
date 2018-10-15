@@ -130,53 +130,64 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String supplierPhoneString = mSupplierPhoneEditText.getText().toString().trim();
         String supplierName = mSupplierSpinner.getSelectedItem().toString();
 
-        Log.e("FARTTTTT", supplierName);
-
-
-
-        if (mCurrentInventoryUri == null && TextUtils.isEmpty(nameString)
-                && TextUtils.isEmpty(priceString) && TextUtils.isEmpty(quantityString)
-                && TextUtils.isEmpty(supplierPhoneString)){
-            return;
+        if (nameString == null || nameString.equals("")){
+            Toast.makeText(this, getString(R.string.must_have_name), Toast.LENGTH_SHORT).show();
         }
 
-        int priceInt = Integer.parseInt(priceString);
-        int quantityInt = Integer.parseInt(quantityString);
-
-        ContentValues values = new ContentValues();
-        values.put(InventoryEntry.COLUMN_PRODUCT_NAME, nameString);
-        values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_PHONE, supplierPhoneString);
-        values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY,quantityInt);
-        values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, priceInt);
-
-        if (supplierName == getString(R.string.supplier1)){
-            mSupplier = InventoryEntry.SUPPLIER_1;
-        } else if (supplierName == getString(R.string.supplier2)){
-            mSupplier = InventoryEntry.SUPPLIER_2;
-        } else if (supplierName == getString(R.string.supplier3)){
-            mSupplier = InventoryEntry.SUPPLIER_UNKNOWN;
+        else if (priceString == null || priceString.equals("")){
+            Toast.makeText(this, getString(R.string.must_have_price), Toast.LENGTH_SHORT).show();
         }
 
+        else if (quantityString == null || quantityString.equals("")){
+            Toast.makeText(this, getString(R.string.must_have_name), Toast.LENGTH_SHORT).show();
+        }
 
-        values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME, mSupplier);
+        else {
 
-        Log.e("YESSESSS", values.getAsString(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME));
-
-        if (mCurrentInventoryUri == null) {
-            Uri newUri = getContentResolver().insert(InventoryEntry.CONTENT_URI, values);
-
-            if (newUri == null) {
-                Toast.makeText(this, getString(R.string.insert_supply_failed), Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, getString(R.string.insert_supply_successful), Toast.LENGTH_SHORT).show();
+            if (mCurrentInventoryUri == null && TextUtils.isEmpty(nameString)
+                    && TextUtils.isEmpty(priceString) && TextUtils.isEmpty(quantityString)
+                    && TextUtils.isEmpty(supplierPhoneString)){
+                Toast.makeText(this, getString(R.string.blank_inventory_fail), Toast.LENGTH_SHORT).show();
+                return;
             }
-        } else {
-            int rowsAffected = getContentResolver().update(mCurrentInventoryUri, values, null, null);
 
-            if (rowsAffected == 0){
-                Toast.makeText(this, getString(R.string.update_failed), Toast.LENGTH_SHORT).show();
+            int priceInt = Integer.parseInt(priceString);
+            int quantityInt = Integer.parseInt(quantityString);
+
+            ContentValues values = new ContentValues();
+            values.put(InventoryEntry.COLUMN_PRODUCT_NAME, nameString);
+            values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_PHONE, supplierPhoneString);
+            values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY,quantityInt);
+            values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, priceInt);
+
+            if (supplierName == getString(R.string.supplier1)){
+                mSupplier = InventoryEntry.SUPPLIER_1;
+            } else if (supplierName == getString(R.string.supplier2)){
+                mSupplier = InventoryEntry.SUPPLIER_2;
+            } else if (supplierName == getString(R.string.supplier3)){
+                mSupplier = InventoryEntry.SUPPLIER_UNKNOWN;
+            }
+
+
+            values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME, mSupplier);
+
+
+            if (mCurrentInventoryUri == null) {
+                Uri newUri = getContentResolver().insert(InventoryEntry.CONTENT_URI, values);
+
+                if (newUri == null) {
+                    Toast.makeText(this, getString(R.string.insert_supply_failed), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, getString(R.string.insert_supply_successful), Toast.LENGTH_SHORT).show();
+                }
             } else {
-                Toast.makeText(this, getString(R.string.update_finished), Toast.LENGTH_SHORT).show();
+                int rowsAffected = getContentResolver().update(mCurrentInventoryUri, values, null, null);
+
+                if (rowsAffected == 0) {
+                    Toast.makeText(this, getString(R.string.update_failed), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, getString(R.string.update_finished), Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }

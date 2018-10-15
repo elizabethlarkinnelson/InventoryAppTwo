@@ -20,14 +20,20 @@
     <string name="supplier2">Brushtastic</string>
     <string name="supplier3">Unknown</string>
 
-    <!-- Toast -->
+    <!-- toast -->
     <string name="insert_supply_failed">Failed to add brush to database</string>
     <string name="insert_supply_successful">Brush successfully added</string>
     <string name="update_failed">Update Failed</string>
     <string name="update_finished">Update Finished</string>
     <string name="delete_inventory">Delete complete</string>
+    <string name="blank_inventory_fail">Cannot add blank inventory </string>
 
-    <!--- Builder -->
+    <!-- toast input check -->
+    <string name="must_have_name">Must have name</string>
+    <string name="must_have_price">Must have price</string>
+    <string name="must_have_quantity">Must have quantity</string>
+
+    <!--- builder -->
     <string name="unsaved_changes">Changes unsaved</string>
     <string name="discard">Get rid of changes?></string>
     <string name="edit">Keep editing?</string>
