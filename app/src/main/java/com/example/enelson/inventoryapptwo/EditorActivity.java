@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -105,11 +106,11 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selection = (String) parent.getItemAtPosition(position);
                 if (!TextUtils.isEmpty(selection)){
-                    if (selection.equals(getString(R.string.suppler1))){
+                    if (selection.equals(getString(R.string.supplier1))){
                         mSupplier = InventoryEntry.SUPPLIER_1;
                     } else if (selection.equals(getString(R.string.supplier2))){
                         mSupplier = InventoryEntry.SUPPLIER_2;
-                    } else {
+                    } else if (selection.equals(getString(R.string.supplier3))){
                         mSupplier = InventoryEntry.SUPPLIER_UNKNOWN;
                     }
                 }
@@ -127,6 +128,11 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         String priceString = mPriceEditText.getText().toString().trim();
         String quantityString = mQuantityEditText.getText().toString().trim();
         String supplierPhoneString = mSupplierPhoneEditText.getText().toString().trim();
+        String supplierName = mSupplierSpinner.getSelectedItem().toString();
+
+        Log.e("FARTTTTT", supplierName);
+
+
 
         if (mCurrentInventoryUri == null && TextUtils.isEmpty(nameString)
                 && TextUtils.isEmpty(priceString) && TextUtils.isEmpty(quantityString)
@@ -139,10 +145,22 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         ContentValues values = new ContentValues();
         values.put(InventoryEntry.COLUMN_PRODUCT_NAME, nameString);
-        values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME, mSupplier);
         values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_PHONE, supplierPhoneString);
         values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY,quantityInt);
         values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, priceInt);
+
+        if (supplierName == getString(R.string.supplier1)){
+            mSupplier = InventoryEntry.SUPPLIER_1;
+        } else if (supplierName == getString(R.string.supplier2)){
+            mSupplier = InventoryEntry.SUPPLIER_2;
+        } else if (supplierName == getString(R.string.supplier3)){
+            mSupplier = InventoryEntry.SUPPLIER_UNKNOWN;
+        }
+
+
+        values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME, mSupplier);
+
+        Log.e("YESSESSS", values.getAsString(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME));
 
         if (mCurrentInventoryUri == null) {
             Uri newUri = getContentResolver().insert(InventoryEntry.CONTENT_URI, values);
@@ -256,13 +274,13 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
             switch (supplier){
                 case InventoryEntry.SUPPLIER_1:
-                    mSupplierSpinner.setSelection(1);
+                    mSupplierSpinner.setSelection(0);
                     break;
                 case InventoryEntry.SUPPLIER_2:
-                    mSupplierSpinner.setSelection(2);
+                    mSupplierSpinner.setSelection(1);
                     break;
                 case InventoryEntry.SUPPLIER_UNKNOWN:
-                    mSupplierSpinner.setSelection(0);
+                    mSupplierSpinner.setSelection(2);
                     break;
             }
         }

@@ -134,23 +134,17 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
             Uri deleteUri = ContentUris.withAppendedId(InventoryEntry.CONTENT_URI, Integer.parseInt(id));
             int rowsAffected = getContentResolver().delete(deleteUri, id, null);
-
-            Log.e("DELETEEEEEEEE", Integer.toString(rowsAffected));
         }
 
         else {
             quantity = quantity - 1;
 
-            Log.e("PRICEEEEEEEEEEE", Integer.toString(quantity));
-
             ContentValues values = new ContentValues();
             values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY, quantity);
-
 
             Uri updateUri = ContentUris.withAppendedId(InventoryEntry.CONTENT_URI, Integer.parseInt(id));
             int rowsAffected = getContentResolver().update(updateUri, values, id, null);
 
-            Log.e("FARRRTTTTT", Integer.toString(rowsAffected));
         }
     }
 }

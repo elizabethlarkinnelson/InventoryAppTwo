@@ -16,9 +16,9 @@
 
 
     <!-- supplier spinner strings -->
-    <string name="suppler1">Brushs Galore</string>
+    <string name="supplier1">Brushs Galore</string>
     <string name="supplier2">Brushtastic</string>
-    <string name="supplier3">Brushs and More</string>
+    <string name="supplier3">Unknown</string>
 
     <!-- Toast -->
     <string name="insert_supply_failed">Failed to add brush to database</string>
