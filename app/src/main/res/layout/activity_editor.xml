@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:inputType="textCapWords"
+                android:maxLength="30"
                 />
         </LinearLayout>
     </LinearLayout>
@@ -57,7 +58,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="8dp"
-                android:inputType="number"/>
+                android:inputType="number"
+                android:maxLength="4"/>
 
         </RelativeLayout>
 
@@ -88,6 +90,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="8dp"
                 android:inputType="number"
+                android:maxLength="10"
                 />
 
         </RelativeLayout>
@@ -117,7 +120,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginLeft="8dp"
                 android:inputType="number"
-                android:hint="10"/>
+                android:hint="10"
+                android:maxLength="4"/>
 
         </RelativeLayout>
 
