@@ -10,6 +10,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -93,13 +94,35 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         setupSpinner();
 
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_editor);
+        fab.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                String phone = mSupplierPhoneEditText.getText().toString().trim();
+
+                if (phone.equals("") || phone.length() != 10){
+                    Toast.makeText(getApplicationContext(), getString(R.string.invalid_phone), Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+                    startActivity(intent);
+                }
+            }
+        });
+
         Button increaseQuantity = (Button) findViewById(R.id.button_quantity_increase);
         Button decreaseQuantity = (Button) findViewById(R.id.button_quantity_decrease);
 
         increaseQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int amount = Integer.parseInt(mQuantityEditText.getText().toString().trim());
+                String amountString = mQuantityEditText.getText().toString().trim();
+
+                if (amountString.equals("")){
+                    Toast.makeText(getApplicationContext(), getString(R.string.cannot_add_to_none), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                int amount = Integer.parseInt(amountString);
 
                 if (amount == 9999) {
                     Toast.makeText(getApplicationContext(), getString(R.string.cannot_go_above_editor), Toast.LENGTH_SHORT).show();
@@ -114,11 +137,19 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         decreaseQuantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int amount = Integer.parseInt(mQuantityEditText.getText().toString().trim());
+                String amountString = mQuantityEditText.getText().toString().trim();
+
+                if (amountString.equals("")){
+                    Toast.makeText(getApplicationContext(), getString(R.string.cannot_add_to_none), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                int amount = Integer.parseInt(amountString);
 
                 if (amount == 1) {
                     Toast.makeText(getApplicationContext(), getString(R.string.cannot_go_below_one_editor), Toast.LENGTH_SHORT).show();
                 }
+
                 else {
                     amount = amount - 1;
                     mQuantityEditText.setText(Integer.toString(amount));
@@ -158,7 +189,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         });
     }
 
-    private void saveInventory() {
+    private boolean saveInventory() {
         String nameString = mNameEditText.getText().toString().trim();
         String priceString = mPriceEditText.getText().toString().trim();
         String quantityString = mQuantityEditText.getText().toString().trim();
@@ -167,14 +198,23 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
         if (nameString == null || nameString.equals("")){
             Toast.makeText(this, getString(R.string.must_have_name), Toast.LENGTH_SHORT).show();
+            return false;
+
         }
 
         else if (priceString == null || priceString.equals("") || Integer.parseInt(priceString) <= 0){
             Toast.makeText(this, getString(R.string.must_have_price), Toast.LENGTH_SHORT).show();
+            return false;
         }
 
         else if (quantityString == null || quantityString.equals("") || Integer.parseInt(quantityString) <= 0){
             Toast.makeText(this, getString(R.string.must_have_quantity), Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        else if (supplierPhoneString.length() != 10){
+            Toast.makeText(this, getString(R.string.invalid_phone), Toast.LENGTH_SHORT).show();
+            return false;
         }
 
         else {
@@ -183,7 +223,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                     && TextUtils.isEmpty(priceString) && TextUtils.isEmpty(quantityString)
                     && TextUtils.isEmpty(supplierPhoneString)){
                 Toast.makeText(this, getString(R.string.blank_inventory_fail), Toast.LENGTH_SHORT).show();
-                return;
+                return false;
             }
 
             int priceInt = Integer.parseInt(priceString);
@@ -224,6 +264,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
                     Toast.makeText(this, getString(R.string.update_finished), Toast.LENGTH_SHORT).show();
                 }
             }
+            return true;
         }
     }
     @Override
@@ -236,8 +277,10 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.action_save:
-                saveInventory();
-                finish();
+
+                if (saveInventory()){
+                    finish();
+                };
                 return true;
 
             case R.id.action_delete:
@@ -363,13 +406,13 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
     private void showDeleteConfirmationDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Message deleted");
-        builder.setPositiveButton("Deleted", new DialogInterface.OnClickListener(){
+        builder.setMessage(R.string.delete_confirm);
+        builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener(){
             public void onClick(DialogInterface dialog, int id){
                 deleteInventory();
             }
         });
-        builder.setNegativeButton("cancel?", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancel_question, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id){
                 if (dialog != null){
                     dialog.dismiss();

@@ -172,5 +172,30 @@
         </LinearLayout>
 
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true">
+
+
+        <android.support.design.widget.FloatingActionButton xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/fab_editor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            app:backgroundTint="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/fab_text_editor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="16dp"
+            android:layout_centerInParent="true"
+            android:text="@string/call"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
 
 </LinearLayout>

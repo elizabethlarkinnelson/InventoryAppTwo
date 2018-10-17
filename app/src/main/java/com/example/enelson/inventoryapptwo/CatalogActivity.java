@@ -74,7 +74,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         values.put(InventoryEntry.COLUMN_PRODUCT_PRICE, 5);
         values.put(InventoryEntry.COLUMN_PRODUCT_QUANTITY, 5);
         values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_NAME, InventoryEntry.SUPPLIER_1);
-        values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_PHONE, "888-888-8888");
+        values.put(InventoryEntry.COLUMN_PRODUCT_SUPPLIER_PHONE, "8888888888");
 
         Uri newUri = getContentResolver().insert(InventoryEntry.CONTENT_URI, values);
 
