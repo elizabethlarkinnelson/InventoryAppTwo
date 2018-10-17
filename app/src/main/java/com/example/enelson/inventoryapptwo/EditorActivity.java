@@ -139,7 +139,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         }
 
         else if (quantityString == null || quantityString.equals("")){
-            Toast.makeText(this, getString(R.string.must_have_name), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.must_have_quantity), Toast.LENGTH_SHORT).show();
         }
 
         else {
