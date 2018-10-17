@@ -7,6 +7,7 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.icu.text.UnicodeSetSpanner;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -130,10 +131,9 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
     public void decreaseCount(String id, int quantity){
 
-        if (quantity == 1) {
+        if (quantity == 0) {
+            Toast.makeText(this, getString(R.string.cannot_go_below_zero_editor), Toast.LENGTH_SHORT).show();
 
-            Uri deleteUri = ContentUris.withAppendedId(InventoryEntry.CONTENT_URI, Integer.parseInt(id));
-            int rowsAffected = getContentResolver().delete(deleteUri, id, null);
         }
 
         else {

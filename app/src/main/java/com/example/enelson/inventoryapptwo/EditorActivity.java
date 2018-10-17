@@ -146,8 +146,8 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
 
                 int amount = Integer.parseInt(amountString);
 
-                if (amount == 1) {
-                    Toast.makeText(getApplicationContext(), getString(R.string.cannot_go_below_one_editor), Toast.LENGTH_SHORT).show();
+                if (amount == 0) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.cannot_go_below_zero_editor), Toast.LENGTH_SHORT).show();
                 }
 
                 else {
@@ -207,7 +207,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             return false;
         }
 
-        else if (quantityString == null || quantityString.equals("") || Integer.parseInt(quantityString) <= 0){
+        else if (quantityString == null || quantityString.equals("") || Integer.parseInt(quantityString) < 0){
             Toast.makeText(this, getString(R.string.must_have_quantity), Toast.LENGTH_SHORT).show();
             return false;
         }

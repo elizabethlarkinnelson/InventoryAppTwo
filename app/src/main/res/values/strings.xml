@@ -33,7 +33,7 @@
     <string name="must_have_price">Must have valid price</string>
     <string name="must_have_quantity">Must have valid quantity</string>
     <string name="invalid_phone">Invalid phone number</string>
-    <string name="cannot_go_below_one_editor">Cannot go below 1 in editor screen</string>
+    <string name="cannot_go_below_zero_editor">Cannot go below 0</string>
     <string name="cannot_go_above_editor">Cannot go above 9999 in editor screen</string>
     <string name="cannot_add_to_none">Cannot use button on null quantity</string>
 
