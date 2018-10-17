@@ -3,7 +3,7 @@
 
     <!-- activity_catalog strings -->
     <string name="empty_view_title_text">Whoops! There are no brushes.</string>
-    <string name="empty_view_description">Press Add - enter name, quantity and price!</string>
+    <string name="empty_view_description">Press the add button to input a brush!</string>
 
     <!-- activity_editor strings -->
     <string name="editor_title">Inventory</string>

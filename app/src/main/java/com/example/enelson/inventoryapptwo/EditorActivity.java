@@ -212,12 +212,7 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             return false;
         }
 
-        else if (supplierPhoneString == null || supplierPhoneString.equals("") || Integer.parseInt(quantityString) != 10){
-            Toast.makeText(this, getString(R.string.must_have_quantity), Toast.LENGTH_SHORT).show();
-            return false;
-        }
-
-        else if (supplierPhoneString.length() != 10){
+        else if (supplierPhoneString == null || supplierPhoneString.equals("") || supplierPhoneString.length() != 10){
             Toast.makeText(this, getString(R.string.invalid_phone), Toast.LENGTH_SHORT).show();
             return false;
         }
