@@ -123,6 +123,24 @@
                 android:hint="10"
                 android:maxLength="4"/>
 
+            <Button
+                android:id="@+id/button_quantity_increase"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@+id/edit_quantity"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:text="@string/plus"/>
+
+            <Button
+                android:id="@+id/button_quantity_decrease"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_toRightOf="@+id/button_quantity_increase"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="8dp"
+                android:text="@string/minus" />
+
         </RelativeLayout>
 
     </LinearLayout>

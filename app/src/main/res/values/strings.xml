@@ -29,9 +29,11 @@
     <string name="blank_inventory_fail">Cannot add blank inventory </string>
 
     <!-- toast input check -->
-    <string name="must_have_name">Must have name</string>
-    <string name="must_have_price">Must have price</string>
-    <string name="must_have_quantity">Must have quantity</string>
+    <string name="must_have_name">Must have valid name</string>
+    <string name="must_have_price">Must have valid price</string>
+    <string name="must_have_quantity">Must have valid quantity</string>
+    <string name="cannot_go_below_one_editor">Cannot go below 1 in editor screen</string>
+    <string name="cannot_go_above_editor">Cannot go above 9999 in editor screen</string>
 
     <!--- builder -->
     <string name="unsaved_changes">Changes unsaved</string>
@@ -45,6 +47,8 @@
     <string name="quantity_list_item_text">Quantity:</string>
     <string name="sale_button">sale</string>
     <string name="supplier">Supplier</string>
+    <string name="plus">+</string>
+    <string name="minus">-</string>
 
 
 </resources>

@@ -20,6 +20,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -91,6 +92,40 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mSupplierSpinner.setOnTouchListener(mTouchListener);
 
         setupSpinner();
+
+        Button increaseQuantity = (Button) findViewById(R.id.button_quantity_increase);
+        Button decreaseQuantity = (Button) findViewById(R.id.button_quantity_decrease);
+
+        increaseQuantity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int amount = Integer.parseInt(mQuantityEditText.getText().toString().trim());
+
+                if (amount == 9999) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.cannot_go_above_editor), Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    amount = amount + 1;
+                    mQuantityEditText.setText(Integer.toString(amount));
+                }
+            }
+        });
+
+        decreaseQuantity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int amount = Integer.parseInt(mQuantityEditText.getText().toString().trim());
+
+                if (amount == 1) {
+                    Toast.makeText(getApplicationContext(), getString(R.string.cannot_go_below_one_editor), Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    amount = amount - 1;
+                    mQuantityEditText.setText(Integer.toString(amount));
+                }
+            }
+        });
+
     }
 
     private void setupSpinner(){
@@ -134,11 +169,11 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
             Toast.makeText(this, getString(R.string.must_have_name), Toast.LENGTH_SHORT).show();
         }
 
-        else if (priceString == null || priceString.equals("")){
+        else if (priceString == null || priceString.equals("") || Integer.parseInt(priceString) <= 0){
             Toast.makeText(this, getString(R.string.must_have_price), Toast.LENGTH_SHORT).show();
         }
 
-        else if (quantityString == null || quantityString.equals("")){
+        else if (quantityString == null || quantityString.equals("") || Integer.parseInt(quantityString) <= 0){
             Toast.makeText(this, getString(R.string.must_have_quantity), Toast.LENGTH_SHORT).show();
         }
 
